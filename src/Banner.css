@@ -1,0 +1,39 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+#banner-name {
+  font-size: 3vh;
+  /*text-shadow: 1px 1px white;*/
+  color: white;
+
+}
+
+.image-banner {
+  /* The image used */
+  background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0)), url('./images/football.jpg');
+
+  /* Full height */
+  height: 100vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.banner.text.container {
+  color: white;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+.image-banner h1 {
+  color: white;
+  letter-spacing: 2.6px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'Permanent Marker', cursive;
+}

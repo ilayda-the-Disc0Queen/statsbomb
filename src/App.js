@@ -3,14 +3,16 @@ import MatchInfo from './components/MatchInfo';
 import PlayerInfo from './components/PlayerInfo';
 import StatInfo from './components/StatInfo';
 import TeamInfo from './components/TeamInfo';
+import Banner from './Banner';
 
 function App() {
   return (
     <div className="App">
-     <MatchInfo/>
-     <PlayerInfo/>
-     <StatInfo/>
-     <TeamInfo/>
+      <Banner/>
+      <MatchInfo/>
+      <PlayerInfo/>
+      <StatInfo/>
+      <TeamInfo/>
     </div>
   );
 }
