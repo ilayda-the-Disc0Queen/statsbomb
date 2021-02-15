@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function TeamInfo() {
   const [ teamData, setTeamData ] = useState([]);
 
   const getTeamData = () => {
-    fetch('team-data.json'
-    ,{
-      headers : {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-      }
-    )
-      .then(function(response){
+    axios.get('team-data.json')
+      .then((response) => {
         // console.log(response)
-        return response.json();
+        return response.data;
       })
       .then(function(myJson) {
         // console.log(myJson);
