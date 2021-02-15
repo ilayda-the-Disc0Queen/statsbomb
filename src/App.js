@@ -6,7 +6,7 @@ function App() {
   const [ statData, setStatData ] = useState([]);
   const [ teamData, setTeamData ] = useState([]);
 
-  const getMatchData=()=>{
+  const getMatchData = () => {
     fetch('match-data.json'
     ,{
       headers : {
@@ -25,12 +25,11 @@ function App() {
       });
   }
 
-
   useEffect(()=>{
     getMatchData()
   },[])
 
-  const getPlayerData=()=>{
+  const getPlayerData = () => {
     fetch('player-data.json'
     ,{
       headers : {
@@ -49,12 +48,11 @@ function App() {
       });
   }
 
-
   useEffect(()=>{
     getPlayerData()
   },[])
 
-  const getStatData=()=>{
+  const getStatData = () => {
     fetch('stat-data.json'
     ,{
       headers : {
@@ -77,7 +75,7 @@ function App() {
     getStatData()
   },[])
 
-  const getTeamData=()=>{
+  const getTeamData = () => {
     fetch('team-data.json'
     ,{
       headers : {
