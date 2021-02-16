@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MatchData } from '../data/MatchData';
 
 function MatchInfo() {
   const [ matchData, setMatchData ] = useState([]);
@@ -27,15 +28,15 @@ function MatchInfo() {
   },[])
 
   return (
-    <div className="Match">
+    <div className="match ui container">
       <h1>Match data!</h1>
-     {
+      {
        matchData && matchData.length > 0 && matchData.map((match) =>
         <p key={match.match_id}>{match.match_date}</p>
         )
-     }
+      }
     </div>
-  );
+  )
 }
 
 export default MatchInfo;
