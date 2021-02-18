@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function TeamInfo() {
+  // const express = require('express');
+  const cors = require('cors')
+  // const app = express();
+  // const port = 9000;
+
   const [ teamData, setTeamData ] = useState([]);
 
   const getTeamData = () => {
-    axios.get('team-data.json')
+    // app.get('/api/getAccountList', cors(), (req, res)=>{})
+    axios.get('http://localhost:9000/testAPI/match-data.json', cors(), (req, res)=>{})
       .then((response) => {
         // console.log(response)
         return response.data;
@@ -18,7 +24,7 @@ function TeamInfo() {
 
   useEffect(()=>{
     getTeamData()
-  },[])
+  })
 
   return (
     <div className="Team">

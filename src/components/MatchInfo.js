@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { MatchData } from '../data/MatchData';
 
 function MatchInfo() {
   const [ matchData, setMatchData ] = useState([]);
