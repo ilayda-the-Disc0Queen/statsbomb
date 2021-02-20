@@ -57,13 +57,26 @@ function MatchInfo() {
     })[0]
   }
 
-  // const homePenaltyNull = (match) => {
-  //   if (match.match_home_penalty_score == null) {
-  //     return
-  //   } else {
-  //     <p>Penalties = {match.match_home_penalty_score}</p>
-  //   }
-  // }
+  //
+
+
+  const wereTherePenalties = (match) => {
+    if (match.match_home_score === match.match_away_score) {
+      return true
+    } else {
+      return false
+    }
+  }
+// I know this can be done one 1 line, but right now I just need it to work!
+
+
+
+
+  const homePenaltyNull = (match) => {
+    if (wereTherePenalties) {
+      <p>Penalties = {match.match_home_penalty_score}</p>
+    }
+  }
 
   // const awayPenaltyNull = (match) => {
   //   if (match.match_away_penalty_score == null) {
@@ -72,6 +85,12 @@ function MatchInfo() {
   //     <p>Penalties = {match.match_away_penalty_score}</p>
   //   }
   // }
+
+  //
+  // select top player from match ID for both home and away team
+  // and display name, country, minutes played, goals and total passes (left + right foot)
+
+
 
   return (
     <div className="match ui raised very padded text container segment">
@@ -103,12 +122,5 @@ function MatchInfo() {
 }
 
 export default MatchInfo;
-
-// {
-//        matchData && matchData.length > 0 && matchData.map((match) =>
-//         <p key={match.match_id}>{sortedMatchData}</p>
-//         )
-//       }
-
 
 

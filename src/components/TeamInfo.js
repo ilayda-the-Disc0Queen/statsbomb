@@ -26,6 +26,8 @@ function TeamInfo() {
     getTeamData()
   },[])
 
+  // const teamColour = (team) => {color: team.team_first_color};
+
   return (
     <div className="Team">
      <h2>Team data!</h2>

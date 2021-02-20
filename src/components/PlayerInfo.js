@@ -26,16 +26,18 @@ function PlayerInfo() {
     getPlayerData()
   },[])
 
+
   return (
-    <div className="Player">
-     <h2>Player data!</h2>
-     {
-       playerData && playerData.length > 0 && playerData.map((player) =>
-        <p key={player.player_id}>{player.player_name}</p>
-        )
-     }
+    <div className="player ui raised very padded text container segment">
+      <h1>Player data!</h1>
+      <div className="ui grid">
+        <div className="eight wide column">
+        </div>
+        <div className="eight wide column">
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
 export default PlayerInfo;

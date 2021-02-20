@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <Banner/>
-        <p className="App-intro">{this.state.apiResponse}</p>
+        {/* <p className="App-intro">{this.state.apiResponse}</p> */}
         <MatchInfo/>
         <PlayerInfo/>
         <StatInfo/>
