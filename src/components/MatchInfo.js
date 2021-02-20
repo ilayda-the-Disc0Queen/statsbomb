@@ -57,6 +57,22 @@ function MatchInfo() {
     })[0]
   }
 
+  // const homePenaltyNull = (match) => {
+  //   if (match.match_home_penalty_score == null) {
+  //     return
+  //   } else {
+  //     <p>Penalties = {match.match_home_penalty_score}</p>
+  //   }
+  // }
+
+  // const awayPenaltyNull = (match) => {
+  //   if (match.match_away_penalty_score == null) {
+  //     return
+  //   } else {
+  //     <p>Penalties = {match.match_away_penalty_score}</p>
+  //   }
+  // }
+
   return (
     <div className="match ui raised very padded text container segment">
       <h1>Match data!</h1>
@@ -64,9 +80,9 @@ function MatchInfo() {
         <div className="eight wide column">
           {
            matchData && matchData.length > 0 && sortedScoreData.map((match) =>
-            <div key={match.match_id}>
+            <div className="ui container segment" key={match.match_id}>
               <p>Home team = {match.match_home_team_id}</p>
-              <p>{match.match_home_score}</p>
+              <p>Goals = {match.match_home_score}</p>
             </div>
             )
           }
@@ -74,9 +90,9 @@ function MatchInfo() {
         <div className="eight wide column">
           {
            matchData && matchData.length > 0 && sortedScoreData.map((match) =>
-            <div key={match.match_id}>
+            <div className="ui container segment" key={match.match_id}>
               <p>Away team = {match.match_away_team_id}</p>
-              <p>{match.match_away_score}</p>
+              <p>Goals = {match.match_away_score}</p>
             </div>
             )
           }
