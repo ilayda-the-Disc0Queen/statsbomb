@@ -69,11 +69,8 @@ function MatchInfo() {
   }
 // I know this can be done one 1 line, but right now I just need it to work!
 
-
-
-
   const homePenaltyNull = (match) => {
-    if (wereTherePenalties) {
+    if (wereTherePenalties === true ) {
       <p>Penalties = {match.match_home_penalty_score}</p>
     }
   }
@@ -86,9 +83,11 @@ function MatchInfo() {
   //   }
   // }
 
-  //
+  // WHAT I WANNA GET DONE BEFORE SUBMITTING!⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
+  // in the match info boxes:
   // select top player from match ID for both home and away team
   // and display name, country, minutes played, goals and total passes (left + right foot)
+  // also only display penalties if they are needed
 
 
 
@@ -102,6 +101,7 @@ function MatchInfo() {
             <div className="ui container segment" key={match.match_id}>
               <p>Home team = {match.match_home_team_id}</p>
               <p>Goals = {match.match_home_score}</p>
+              {homePenaltyNull(wereTherePenalties({match}))}
             </div>
             )
           }
