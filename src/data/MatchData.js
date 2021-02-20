@@ -1,4 +1,4 @@
-export const MatchData = [
+const MatchData = [
  {
    "match_id": 7175960,
    "match_date": "07/07/2018 21:00",
@@ -160,3 +160,5 @@ export const MatchData = [
    "match_away_penalty_score": null
  }
 ];
+
+export default MatchData;
