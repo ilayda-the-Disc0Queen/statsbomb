@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SearchBar from './SearchBar';
 
 function PlayerInfo() {
   const [ playerData, setPlayerData ] = useState([]);
@@ -26,16 +27,20 @@ function PlayerInfo() {
     getPlayerData()
   },[])
 
+     // ---- Use with a search input to get transaction by ID ---- //
+  const getPlayerBySearch = (player, data) => {
+    const playerArray = []
+    return !!data.length && data.filter((item) => {
+      if (item.player_name.includes(player)) {
+        playerArray.push(item)
+      }
+      return playerArray
+    })[0]
+  }
 
   return (
     <div className="player ui raised very padded text container segment">
-      <h1>Player data!</h1>
-      <div className="ui grid">
-        <div className="eight wide column">
-        </div>
-        <div className="eight wide column">
-        </div>
-      </div>
+      <SearchBar />
     </div>
   )
 }

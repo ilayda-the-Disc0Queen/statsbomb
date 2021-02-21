@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MatchData from '../data/MatchData';
+import TeamData from '../data/TeamData';
+import StatData from '../data/StatData';
+import PlayerData from '../data/PlayerData';
 
 function MatchInfo() {
   const [ matchData, setMatchData ] = useState([]);
@@ -27,6 +30,7 @@ function MatchInfo() {
     getMatchData()
   },[])
 
+
   // ----- SORTING MATCHES ----------//
 
   // sorts array by date //
@@ -48,14 +52,7 @@ function MatchInfo() {
     ) ? 1 : -1)
 
 
-    // ---- Use with a search input to get transaction by ID ---- //
-  const getMatchById = (id, data) => {
-    return !!data.length && data.filter((item) => {
-      if (item.transactionId === id) {
-        return item
-      }
-    })[0]
-  }
+
 
   //
 
@@ -81,21 +78,75 @@ function MatchInfo() {
   // in the match info boxes:
   // select top player from match ID for both home and away team
   // and display name, country, minutes played, goals and total passes (left + right foot)
-  // also only display penalties if they are needed
 
+  const getHomeTeamColour = (match) => {
+    let colour
+    TeamData.forEach((team) => {
+      if (team.team_id === match.match_home_team_id )
+        colour = team.team_first_color
+    })
+    return colour
+  }
+
+  const getAwayTeamColour = (match) => {
+    let colour
+    TeamData.forEach((team) => {
+      if (team.team_id === match.match_away_team_id )
+        colour = team.team_first_color
+    })
+    return colour
+  }
+
+  const getHomeTeamName = (match) => {
+    let name
+    TeamData.forEach((team) => {
+      if (match.match_home_team_id === team.team_id)
+        name = team.team_name
+    })
+    return name
+  }
+
+  const getAwayTeamName = (match) => {
+    let name
+    TeamData.forEach((team) => {
+      if (match.match_away_team_id === team.team_id)
+        name = team.team_name
+    })
+    return name
+  }
+
+  const getPlayerName = (playerArray) => {
+    let playerName
+    PlayerData.forEach((player) => {
+      if (player.player_id === playerArray.player_id)
+        playerName = playerArray.player_name
+    })
+    return playerName
+  }
+
+  const topHomePlayers = (match) => {
+    let topHomePlayersArray = []
+    StatData.forEach((stat) => {
+      if (match.match_home_team_id === stat.team_id)
+        topHomePlayersArray.push(stat.player_id)
+    })
+    console.log(topHomePlayersArray);
+    return topHomePlayersArray
+  }
 
 
   return (
     <div className="match ui raised very padded text container segment">
       <h1>Match data!</h1>
-      <div className="ui grid">
+      <div className="ui left aligned grid">
         <div className="eight wide column">
           {
            matchData && matchData.length > 0 && sortedScoreData.map((match) =>
             <div className="ui container segment" key={match.match_id}>
-              <p>Home team = {match.match_home_team_id}</p>
+              <p>Home team = {getHomeTeamName(match)}</p>
               <p>Goals = {match.match_home_score}</p>
               {isHomePenaltyNull(match)}
+              <i style={{ color: getHomeTeamColour(match), fontSize: 30}} className="fas fa-tshirt"></i>
             </div>
             )
           }
@@ -104,9 +155,10 @@ function MatchInfo() {
           {
            matchData && matchData.length > 0 && sortedScoreData.map((match) =>
             <div className="ui container segment" key={match.match_id}>
-              <p>Away team = {match.match_away_team_id}</p>
+              <p>Away team = {getAwayTeamName(match)}</p>
               <p>Goals = {match.match_away_score}</p>
               {isAwayPenaltyNull(match)}
+              <i style={{ color: getAwayTeamColour(match), fontSize: 30}} className="fas fa-tshirt"></i>
             </div>
             )
           }

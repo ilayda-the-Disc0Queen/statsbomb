@@ -81,8 +81,7 @@ const TeamData = [
   }
  ]
 
-
-
+export default TeamData;
 
 
 
@@ -90,4 +89,4 @@ const TeamData = [
 
 const sortTeamsAlphabetically = TeamData.sort((a, b) => (a.team_name > b.team_name) ? 1 : - 1)
 
-console.log(sortTeamsAlphabetically)
+// console.log(sortTeamsAlphabetically)
