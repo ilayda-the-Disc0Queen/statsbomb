@@ -40,7 +40,13 @@ function PlayerInfo() {
 
   return (
     <div className="player ui raised very padded text container segment">
-      <SearchBar />
+      <div>
+      <h1 className="Title">Search for players</h1>
+      <SearchBar
+        placeholder="Search"
+        onChange={(e) => console.log(e.target.value)}
+       />
+      </div>
     </div>
   )
 }
