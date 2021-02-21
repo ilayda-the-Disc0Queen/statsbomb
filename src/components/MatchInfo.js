@@ -61,27 +61,21 @@ function MatchInfo() {
 
 
   const wereTherePenalties = (match) => {
-    if (match.match_home_score === match.match_away_score) {
-      return true
-    } else {
-      return false
-    }
+    return match.match_home_score === match.match_away_score
   }
 // I know this can be done one 1 line, but right now I just need it to work!
 
-  const homePenaltyNull = (match) => {
-    if (wereTherePenalties === true ) {
-      <p>Penalties = {match.match_home_penalty_score}</p>
+  const isHomePenaltyNull = (match) => {
+    if (wereTherePenalties(match)) {
+      return <p>Penalties = {match.match_home_penalty_score}</p>
     }
   }
 
-  // const awayPenaltyNull = (match) => {
-  //   if (match.match_away_penalty_score == null) {
-  //     return
-  //   } else {
-  //     <p>Penalties = {match.match_away_penalty_score}</p>
-  //   }
-  // }
+  const isAwayPenaltyNull = (match) => {
+    if (wereTherePenalties(match)) {
+      return <p>Penalties = {match.match_away_penalty_score}</p>
+    }
+  }
 
   // WHAT I WANNA GET DONE BEFORE SUBMITTING!⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
   // in the match info boxes:
@@ -101,7 +95,7 @@ function MatchInfo() {
             <div className="ui container segment" key={match.match_id}>
               <p>Home team = {match.match_home_team_id}</p>
               <p>Goals = {match.match_home_score}</p>
-              {homePenaltyNull(wereTherePenalties({match}))}
+              {isHomePenaltyNull(match)}
             </div>
             )
           }
@@ -112,6 +106,7 @@ function MatchInfo() {
             <div className="ui container segment" key={match.match_id}>
               <p>Away team = {match.match_away_team_id}</p>
               <p>Goals = {match.match_away_score}</p>
+              {isAwayPenaltyNull(match)}
             </div>
             )
           }
