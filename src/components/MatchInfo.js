@@ -117,27 +117,6 @@ function MatchInfo() {
     }
   }
 
-  // ----- SORTING MATCHES ----------//
-  // // sorts array by date //
-  // const sortedMatchData = MatchData.sort((a, b) => (a.match_date > b.match_date) ? 1 : -1)
-  // // as the dates do not sort by month, take the end two dates (from June) and put them at the start
-  // sortedMatchData.unshift(sortedMatchData[sortedMatchData.length - 2], sortedMatchData[sortedMatchData.length - 1])
-  // // then remove them from the end
-  // sortedMatchData.splice(-2)
-
-  // ----- Get Matches in order of goals scored ------- //
-  // const sortedScoreData = MatchData.sort((a, b) => ((a.match_home_score + a.match_away_score)
-  //   < (b.match_home_score + b.match_away_score)
-  //   ) ? 1 : -1)
-  //   Object.keys(sortedScoreData);
-
-  // // ----- Get Matches in order of total penalty scores ------ //
-  // const sortedPenlatyData = MatchData.sort((a, b) => ((a.match_home_penalty_score + a.match_away_penalty_score)
-  //   < (b.match_home_penalty_score + b.match_away_penalty_score)
-  //   ) ? 1 : -1)
-
-
-
   return (
     <div className="match ui raised very padded text container segment">
       <h1>Match data!</h1>
@@ -152,7 +131,6 @@ function MatchInfo() {
               {isHomePenaltyNull(match)}
               <i style={{ color: getHomeTeamColour(match), fontSize: 30}} className="fas fa-tshirt"></i>
               <button onClick={()=>{showBestPlayer(index)}}>View best player</button>
-              {/* <button className="flip" onClick={() => {myFunction()}}>Click to show players</button> */}
               <div>
                 <p id={index} style={{ display: 'none'}}>{topHomePlayers(match)}</p>
               </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlayerData from '../data/PlayerData';
 import StatData from '../data/StatData';
-import './SearchBar.css';
+import '../styling/SearchBar.css';
 
 class SearchBar extends Component {
   state = {
