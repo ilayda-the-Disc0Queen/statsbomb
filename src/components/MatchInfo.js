@@ -31,27 +31,7 @@ function MatchInfo() {
     getMatchData()
   },[])
 
-
-  // ----- SORTING MATCHES ----------//
-
-  // // sorts array by date //
-  // const sortedMatchData = MatchData.sort((a, b) => (a.match_date > b.match_date) ? 1 : -1)
-  // // as the dates do not sort by month, take the end two dates (from June) and put them at the start
-  // sortedMatchData.unshift(sortedMatchData[sortedMatchData.length - 2], sortedMatchData[sortedMatchData.length - 1])
-  // // then remove them from the end
-  // sortedMatchData.splice(-2)
-
-  // ----- Get Matches in order of goals scored ------- //
-  // const sortedScoreData = MatchData.sort((a, b) => ((a.match_home_score + a.match_away_score)
-  //   < (b.match_home_score + b.match_away_score)
-  //   ) ? 1 : -1)
-  //   Object.keys(sortedScoreData);
-
-  // // ----- Get Matches in order of total penalty scores ------ //
-  // const sortedPenlatyData = MatchData.sort((a, b) => ((a.match_home_penalty_score + a.match_away_penalty_score)
-  //   < (b.match_home_penalty_score + b.match_away_penalty_score)
-  //   ) ? 1 : -1)
-
+  // ----- MATCH FUNCTIONS ----------//
   const wereTherePenalties = (match) => {
     return match.match_home_score === match.match_away_score
   }
@@ -67,11 +47,6 @@ function MatchInfo() {
       return <p>Penalties = {match.match_away_penalty_score}</p>
     }
   }
-
-  // WHAT I WANNA GET DONE BEFORE SUBMITTING!⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
-  // in the match info boxes:
-  // select top player from match ID for both home and away team
-  // and display name, country, minutes played, goals and total passes (left + right foot)
 
   const getHomeTeamColour = (match) => {
     let colour
@@ -120,7 +95,6 @@ function MatchInfo() {
     return playerName
   }
 
-
   const topHomePlayers = (match) => {
     let topHomePlayersArray = []
     let topPlayer
@@ -134,9 +108,7 @@ function MatchInfo() {
     return topPlayer[0]
   }
 
-
-
-  function showBestPlayer(index) {
+  const showBestPlayer = (index) => {
     let x = document.getElementById(index);
     if (x.style.display === "none") {
       x.style.display = "block"
@@ -144,6 +116,27 @@ function MatchInfo() {
       x.style.display = "none";
     }
   }
+
+  // ----- SORTING MATCHES ----------//
+  // // sorts array by date //
+  // const sortedMatchData = MatchData.sort((a, b) => (a.match_date > b.match_date) ? 1 : -1)
+  // // as the dates do not sort by month, take the end two dates (from June) and put them at the start
+  // sortedMatchData.unshift(sortedMatchData[sortedMatchData.length - 2], sortedMatchData[sortedMatchData.length - 1])
+  // // then remove them from the end
+  // sortedMatchData.splice(-2)
+
+  // ----- Get Matches in order of goals scored ------- //
+  // const sortedScoreData = MatchData.sort((a, b) => ((a.match_home_score + a.match_away_score)
+  //   < (b.match_home_score + b.match_away_score)
+  //   ) ? 1 : -1)
+  //   Object.keys(sortedScoreData);
+
+  // // ----- Get Matches in order of total penalty scores ------ //
+  // const sortedPenlatyData = MatchData.sort((a, b) => ((a.match_home_penalty_score + a.match_away_penalty_score)
+  //   < (b.match_home_penalty_score + b.match_away_penalty_score)
+  //   ) ? 1 : -1)
+
+
 
   return (
     <div className="match ui raised very padded text container segment">
