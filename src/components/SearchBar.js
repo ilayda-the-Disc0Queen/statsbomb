@@ -50,12 +50,16 @@ class SearchBar extends Component {
     }
 
     const displayMorePlayerInfo = (player) => {
-      if ((getPlayerStats(player)) !== undefined) {
-        alert(
-          player.player_name + 'plays for' + player.country_name
-        )
+      let overview
+      if (getPlayerStats(player)) {
+        const stats = getPlayerStats(player)
+        overview = `, in a recent game they played for ${stats.minutes_played} minutes, attempted ${stats.shots} ${stats.shots === 1 ? 'shot' : 'shots'}, scored ${stats.goals} goals, and made ${stats.passes} passes. `
       }
 
+        alert(
+          player.player_name + ' plays for ' + player.country_name + (overview ? overview : '' )
+
+        )
      }
 
     const individualPlayer = (player) => {

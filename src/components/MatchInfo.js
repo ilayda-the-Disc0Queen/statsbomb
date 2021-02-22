@@ -117,7 +117,6 @@ function MatchInfo() {
           playerName.push(player.player_name)
       }
     })
-    console.log(playerName)
     return playerName
   }
 
