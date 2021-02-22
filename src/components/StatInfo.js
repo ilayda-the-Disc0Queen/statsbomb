@@ -32,12 +32,3 @@ function StatInfo() {
 }
 
 export default StatInfo;
-
-// <div className="Stat">
-//      <h2>Stat data!</h2>
-//      {
-//        statData && statData.length > 0 && statData.map((stat) =>
-//         <p>shots: {stat.shots}</p>
-//         )
-//      }
-//     </div>

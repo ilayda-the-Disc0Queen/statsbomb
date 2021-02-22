@@ -27,17 +27,6 @@ function PlayerInfo() {
     getPlayerData()
   },[])
 
-     // ---- Use with a search input to get transaction by ID ---- //
-  const getPlayerBySearch = (player, data) => {
-    const playerArray = []
-    return !!data.length && data.filter((item) => {
-      if (item.player_name.includes(player)) {
-        playerArray.push(item)
-      }
-      return playerArray
-    })[0]
-  }
-
   return (
     <div className="player ui raised very padded text container segment">
       <div>

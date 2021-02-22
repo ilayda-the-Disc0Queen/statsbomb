@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import MatchInfo from './components/MatchInfo';
 import PlayerInfo from './components/PlayerInfo';
-import StatInfo from './components/StatInfo';
-import TeamInfo from './components/TeamInfo';
-import Banner from './Banner';
+import Banner from './components/Banner';
 
 class App extends Component {
   constructor(props) {
@@ -25,11 +23,8 @@ class App extends Component {
     return (
       <div className="App">
         <Banner/>
-        {/* <p className="App-intro">{this.state.apiResponse}</p> */}
         <MatchInfo/>
         <PlayerInfo/>
-        <StatInfo/>
-        <TeamInfo/>
       </div>
     );
   }

@@ -3,7 +3,6 @@ import MatchData from '../data/MatchData';
 import TeamData from '../data/TeamData';
 import StatData from '../data/StatData';
 import PlayerData from '../data/PlayerData';
-import './MatchInfo.css';
 
 function MatchInfo() {
   const [ matchData, setMatchData ] = useState([]);

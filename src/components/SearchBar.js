@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlayerData from '../data/PlayerData';
 import StatData from '../data/StatData';
-import '../styling/SearchBar.css';
+import './styling/SearchBar.css';
 
 class SearchBar extends Component {
   state = {
@@ -53,12 +53,12 @@ class SearchBar extends Component {
       let overview
       if (getPlayerStats(player)) {
         const stats = getPlayerStats(player)
-        overview = `, in a recent game they played for ${stats.minutes_played} minutes, attempted ${stats.shots} ${stats.shots === 1 ? 'shot' : 'shots'}, scored ${stats.goals} goals, and made ${stats.passes} passes. `
+        overview = `, in a recent game they played for ${stats.minutes_played}
+         minutes, attempted ${stats.shots} ${stats.shots === 1 ? 'shot' : 'shots'},
+          scored ${stats.goals} goals, and made ${stats.passes} passes. `
       }
-
         alert(
           player.player_name + ' plays for ' + player.country_name + (overview ? overview : '' )
-
         )
      }
 
@@ -90,9 +90,8 @@ class SearchBar extends Component {
 
     return (
       <div>
-      <input type="text" placeholder="Search for a player by name or country" style={elementStyle} onChange={(e)=>this.searchSpace(e)} />
-      {/* <div onClick={(e)=>console.log(e)}>{players}</div> */}
-      <div>{players}</div>
+        <input type="text" placeholder="Search for a player by name or country" style={elementStyle} onChange={(e)=>this.searchSpace(e)} />
+        <div>{players}</div>
       </div>
     )
   }

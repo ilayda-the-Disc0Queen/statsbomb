@@ -26,17 +26,6 @@ function TeamInfo() {
     getTeamData()
   },[])
 
-  // const teamColour = (team) => {{color: {team.team_first_color} }};
-  // style={{backgroundColor: {team.team_first_color} }}
-  // <div className="Team">
-     // <h2>Team data!</h2>
-     // {
-     //   teamData && teamData.length > 0 && teamData.map((team) =>
-     //    <p key={team.team_id}>{team.team_name}</p>
-     //    )
-     // }
-    // </div>
-
   return (
     null
 

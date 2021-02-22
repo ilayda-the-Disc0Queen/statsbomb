@@ -13,7 +13,7 @@ body, html {
 
 .image-banner {
   /* The image used */
-  background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0)), url('./images/football.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0)), url('../../images/football.jpg');
 
   /* Full height */
   height: 100vh;
