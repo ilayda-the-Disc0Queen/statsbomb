@@ -33,12 +33,12 @@ function MatchInfo() {
 
   // ----- SORTING MATCHES ----------//
 
-  // sorts array by date //
-  const sortedMatchData = MatchData.sort((a, b) => (a.match_date > b.match_date) ? 1 : -1)
-  // as the dates do not sort by month, take the end two dates (from June) and put them at the start
-  sortedMatchData.unshift(sortedMatchData[sortedMatchData.length - 2], sortedMatchData[sortedMatchData.length - 1])
-  // then remove them from the end
-  sortedMatchData.splice(-2)
+  // // sorts array by date //
+  // const sortedMatchData = MatchData.sort((a, b) => (a.match_date > b.match_date) ? 1 : -1)
+  // // as the dates do not sort by month, take the end two dates (from June) and put them at the start
+  // sortedMatchData.unshift(sortedMatchData[sortedMatchData.length - 2], sortedMatchData[sortedMatchData.length - 1])
+  // // then remove them from the end
+  // sortedMatchData.splice(-2)
 
   // ----- Get Matches in order of goals scored ------- //
   const sortedScoreData = MatchData.sort((a, b) => ((a.match_home_score + a.match_away_score)
