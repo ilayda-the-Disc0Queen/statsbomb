@@ -3,6 +3,7 @@ import MatchData from '../data/MatchData';
 import TeamData from '../data/TeamData';
 import StatData from '../data/StatData';
 import PlayerData from '../data/PlayerData';
+import './MatchInfo.css';
 
 function MatchInfo() {
   const [ matchData, setMatchData ] = useState([]);
@@ -41,26 +42,19 @@ function MatchInfo() {
   // sortedMatchData.splice(-2)
 
   // ----- Get Matches in order of goals scored ------- //
-  const sortedScoreData = MatchData.sort((a, b) => ((a.match_home_score + a.match_away_score)
-    < (b.match_home_score + b.match_away_score)
-    ) ? 1 : -1)
-    Object.keys(sortedScoreData);
+  // const sortedScoreData = MatchData.sort((a, b) => ((a.match_home_score + a.match_away_score)
+  //   < (b.match_home_score + b.match_away_score)
+  //   ) ? 1 : -1)
+  //   Object.keys(sortedScoreData);
 
-  // ----- Get Matches in order of total penalty scores ------ //
-  const sortedPenlatyData = MatchData.sort((a, b) => ((a.match_home_penalty_score + a.match_away_penalty_score)
-    < (b.match_home_penalty_score + b.match_away_penalty_score)
-    ) ? 1 : -1)
-
-
-
-
-  //
-
+  // // ----- Get Matches in order of total penalty scores ------ //
+  // const sortedPenlatyData = MatchData.sort((a, b) => ((a.match_home_penalty_score + a.match_away_penalty_score)
+  //   < (b.match_home_penalty_score + b.match_away_penalty_score)
+  //   ) ? 1 : -1)
 
   const wereTherePenalties = (match) => {
     return match.match_home_score === match.match_away_score
   }
-// I know this can be done one 1 line, but right now I just need it to work!
 
   const isHomePenaltyNull = (match) => {
     if (wereTherePenalties(match)) {
@@ -116,24 +110,41 @@ function MatchInfo() {
   }
 
   const getPlayerName = (playerArray) => {
-    let playerName
+    let playerName = []
     PlayerData.forEach((player) => {
-      if (player.player_id === playerArray.player_id)
-        playerName = playerArray.player_name
+        for (let i = 0; i <= playerArray.length; i++) {
+        if (player.player_id === playerArray[i])
+          playerName.push(player.player_name)
+      }
     })
+    console.log(playerName)
     return playerName
   }
 
+
   const topHomePlayers = (match) => {
     let topHomePlayersArray = []
+    let topPlayer
     StatData.forEach((stat) => {
       if (match.match_home_team_id === stat.team_id)
         topHomePlayersArray.push(stat.player_id)
+      })
+    topHomePlayersArray.forEach((playerId) => {
+      topPlayer = getPlayerName(topHomePlayersArray)
     })
-    console.log(topHomePlayersArray);
-    return topHomePlayersArray
+    return topPlayer[0]
   }
 
+
+
+  function showBestPlayer(index) {
+    let x = document.getElementById(index);
+    if (x.style.display === "none") {
+      x.style.display = "block"
+    } else {
+      x.style.display = "none";
+    }
+  }
 
   return (
     <div className="match ui raised very padded text container segment">
@@ -141,19 +152,26 @@ function MatchInfo() {
       <div className="ui left aligned grid">
         <div className="eight wide column">
           {
-           matchData && matchData.length > 0 && sortedScoreData.map((match) =>
-            <div className="ui container segment" key={match.match_id}>
+           matchData && matchData.length > 0 && MatchData.map((match, index) => {
+            return (
+              <div className="ui container segment" key={match.match_id}>
               <p>Home team = {getHomeTeamName(match)}</p>
               <p>Goals = {match.match_home_score}</p>
               {isHomePenaltyNull(match)}
               <i style={{ color: getHomeTeamColour(match), fontSize: 30}} className="fas fa-tshirt"></i>
+              <button onClick={()=>{showBestPlayer(index)}}>View best player</button>
+              {/* <button className="flip" onClick={() => {myFunction()}}>Click to show players</button> */}
+              <div>
+                <p id={index} style={{ display: 'none'}}>{topHomePlayers(match)}</p>
+              </div>
             </div>
-            )
+            );
+            })
           }
         </div>
         <div className="eight wide column">
           {
-           matchData && matchData.length > 0 && sortedScoreData.map((match) =>
+           matchData && matchData.length > 0 && MatchData.map((match) =>
             <div className="ui container segment" key={match.match_id}>
               <p>Away team = {getAwayTeamName(match)}</p>
               <p>Goals = {match.match_away_score}</p>

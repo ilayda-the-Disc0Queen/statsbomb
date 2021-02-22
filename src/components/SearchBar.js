@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlayerData from '../data/PlayerData';
 import StatData from '../data/StatData';
+import './SearchBar.css';
 
 class SearchBar extends Component {
   state = {
@@ -12,13 +13,7 @@ class SearchBar extends Component {
 
     this.state={
       searchTerm: '',
-      isHidden: true
     }
-    this.toggleHidden = this.toggleHidden.bind(this)
-  }
-
-  toggleHidden(){
-    this.setState({ isHidden: !this.state.isHidden });
   }
 
   // add a function that captures the event of the search box on change and set
@@ -26,7 +21,6 @@ class SearchBar extends Component {
   searchSpace = (event) => {
     let keyword = event.target.value;
     this.setState({searchTerm:keyword})
-    console.log(this.state)
   }
 
   render(){
@@ -37,57 +31,39 @@ class SearchBar extends Component {
     const elementStyle ={
       border:'solid',
       borderRadius:'10px',
-      // position:'relative',
       left:'10vh',
-      height:'3vh',
-      width:'20vh',
+      height:'4vh',
+      width:'100%',
       marginTop:'5vh',
       marginBottom:'10vh'
-    }
-
-    function handleClick(e) {
-    e.preventDefault();
     }
 
     const getPlayerStats = (player) => {
       let stats
       StatData.forEach((stat) => {
-        if (player.player_id === stat.player_id) {
+        if (stat.player_id === player.player_id) {
           stats = stat
-          return stats
-        } else {
-          // console.log("No extra information available!");
           return
         }
       })
+        return stats
     }
 
-    const displayPlayerStats = () => {
-      this.setState({
-        displayPlayerStats: !this.state.displayPlayerStats
-      })
-    }
+    const displayMorePlayerInfo = (player) => {
+      if ((getPlayerStats(player)) !== undefined) {
+        alert(
+          player.player_name + 'plays for' + player.country_name
+        )
+      }
 
-    // const extraPlayerStats = (player) => {
-    //   return (
-    //    <div className="extra-stats">
-    //     <p>{StatData.title}</p>
-    //    </div>
-    //   )
-    //  };
-
-    function displayMorePlayerInfo(player) {
-        <div>WANNA SEE SOME MORE, GO ON DEN MY GUY</div>
-        alert("Great Shot!");
      }
 
     const individualPlayer = (player) => {
       return (
-        <div onClick={displayPlayerStats} key={player.player_id} className="individual-player ui segment">
+        <div onClick={() => {displayMorePlayerInfo(player)}} key={player.player_id} className="individual-player ui segment">
           <ul>
-            <li style={{position:'relative',left:'10vh'}}>
-              <span style={styleInfo}>{player.player_name},</span>
-              <span style={styleInfo}>{player.country_name}</span>
+            <li style={{left:'10vh'}}>
+              <span style={styleInfo}>{player.player_name}</span>
             </li>
           </ul>
         </div>
@@ -95,9 +71,9 @@ class SearchBar extends Component {
     };
 
     const players = PlayerData.filter((data)=>{
-      if(this.state.searchTerm == null)
-          return data
-      else if(data.player_name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || data.country_name.toLowerCase().includes(this.state.searchTerm.toLowerCase())){
+      if(this.state.searchTerm == null) {
+        return null
+      } else if(data.player_name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || data.country_name.toLowerCase().includes(this.state.searchTerm.toLowerCase())){
           return data
       }
     }).map(player=>{
@@ -110,8 +86,9 @@ class SearchBar extends Component {
 
     return (
       <div>
-      <input type="text" placeholder="Search for player" style={elementStyle} onChange={(e)=>this.searchSpace(e)} />
-      <div onClick={(e)=>console.log(e)}>{players}</div>
+      <input type="text" placeholder="Search for a player by name or country" style={elementStyle} onChange={(e)=>this.searchSpace(e)} />
+      {/* <div onClick={(e)=>console.log(e)}>{players}</div> */}
+      <div>{players}</div>
       </div>
     )
   }
