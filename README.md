@@ -74,7 +74,7 @@ said player to another would be a good feature to use charts and graphs for.
 - The 'view best player' button is only featured in the home matches of the Match
 Data section, as I felt demonstrating that it worked was more important than doing
 a similar thing twice. Despite this, I'd like to add to the button and include
-more information abbout why that player (statistically speaking) was the best
+more information about why that player (statistically speaking) was the best
 player of the match.
 
 
