@@ -1,45 +1,99 @@
-# StatsBomb Interview Test
+# StatsBomb Interview Test - Ilayda Bakare
 
-In this coding test, you're going to create a simple full stack web
-application to load and display some football data.
+**Hi Team**,
 
-## Data
+Thanks for setting me this challenge, I had an idea of what I'd like to deliver
+but found the implementation tricky. Nonetheless, I'd like to submit what I have
+put together - I have detailed some of my approaches, successes and the issues I
+faced down below, as well as what I'd like to have done if I had more time.
 
-A selection of statistical data has been pre made for you to use in
-your application in the following files:
+Firstly, I chose to build a React app as I have experience building SPAs with
+this framework, however I have not had much practice doing external data manipulation,
+which put me at a slight disadvantage. I chose React over Ruby-on-Rails because
+the amount of work required to get a single page running was much less hassle
+in React.
 
-* `player-data.json`
-* `match-data.json`
-* `stat-data.json`
-* `team-data.json`
+-------------------------
 
-Your first task is to create an API to wrap this data, either directly
-from the files or from some sort of database. You are free to use
-whatever backend languages and frameworks you are comfortable
-with. This API will then be the only source of data for the next task.
+## Requirements:
+1. Overall: You're to create a simple full stack web application to load and
+display some football data.
+**Result:** Success! Users can see the results of matches, their scores and
+a key player from the match, as well as searching for players by name or country.
 
-## Web app
+2. Your first task is to create an API to wrap this data. This API will then be
+the only source of data for the next task.
+**Result:** Little success. At first I used `fetch` and the `axios` library but
+struggled with making a `Node Express server` so the api fetch could have a url
+to get the data from.
 
-Your next task is to create a single page web application. This can be
-done in any dialect of scripting language plus whatever libraries you
-think are appropriate. The application needs the following features:
+3. It should display some sort of visualisation of the data from your
+API, e.g. a chart or graph etc.
+**Result:** Some success, though no charts or graphs were used. I found it difficult
+getting the data from relevant sources to display on the site, because I didn't
+use a relational database. As such, it was all I could do to render some information
+to the screen!
 
-* It should display some sort of visualisation of the data from your
-  API, e.g. a chart or graph etc.
-* You should include some sort of interactive filtering or selection
-  of data that updates the viz in realtime.
-* It should persist the user's last filters and selections across
-  browser sessions.
+4. You should include some sort of interactive filtering or selection
+of data that updates the viz in realtime.
+**Result:** Success! A user can search through a list of football players either
+by first name or the country they play for.
 
-## Deliverables
+5. It should persist the user's last filters and selections across
+browser sessions.
+**Result:** Unfortunately little success as the search resets when the page reloads.
 
-When you're done, zip up your code, and email it along with
-instructions on how to run it to careers@statsbomb.com. We'll look at
-what you've done and arrange some time for you to walk us through your
-code, and we'll ask some follow up questions about your work and how
-you might build on it.
+--------------------
 
-We are much more interested in the quality and clarity of your code
-than how much functionality you deliver. Don't panic if you run out of
-time, we just want to see how you approach real problems with real
-code.
+## Failures:
+
+- The inability to set up the API to be the only source of data for the task was
+my biggest dissapointment, but as I had already spent 2 days researching and
+building what I could with React, I didn't want to start from scratch and build a
+RoR app with relational database as I wanted to get the task completed ASAP.
+
+- As mentioned, I believe using charts or graphs to compare players' stats to
+determine accurately who, statistically, the 'best' players were is something I
+feel frustrated I couldn't complete in time.
+
+-----------
+
+## Improvements:
+
+- I think a relational database would've been a far easier way to communicate
+between the data, and would have meant having to create far fewer functions, especially
+in the `MatchInfo.js` file.
+
+- Being able to implement `State` would mean a better user experience, for example
+having the player stats present themselves in a styled div, rather than an alert
+at the top of the page.
+
+- Selecting more than one player from the search and implementing logic to compare
+said player to another would be a good feature to use charts and graphs for.
+
+- The 'view best player' button is only featured in the home matches of the Match
+Data section, as I felt demonstrating that it worked was more important than doing
+a similar thing twice. Despite this, I'd like to add to the button and include
+more information abbout why that player (statistically speaking) was the best
+player of the match.
+
+
+**Time and Space complexity**
+- I admit that optimising for time or space was not my highest priority, since
+accessing data in the first place proved quite challenging, but it is something
+I'd like to work on improving
+- Time could also have been improved by not calling functions and `const` in other
+functions so regularly
+
+------------------------
+
+## The Project:
+
+To access the project simply go to 'https://statsbomb-j2kfn8eme-ilayda-the-disc0queen.vercel.app/'
+
+
+------------------------
+
+Thanks,
+
+Ilayda Bakare
